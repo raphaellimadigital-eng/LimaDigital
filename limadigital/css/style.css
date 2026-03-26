@@ -281,6 +281,30 @@ section {
     padding: 0 20px;
 }
 
+.sobre-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    align-items: center;
+    gap: 56px;
+}
+
+.sobre-media {
+    width: 100%;
+}
+
+.sobre-img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.sobre-content {
+    padding-left: 8px;
+}
+
 .sobre-label {
     margin: 0 0 22px;
     color: #ffffff;
@@ -834,7 +858,7 @@ footer {
     content: "";
     position: absolute;
     inset: 0;
-    background: url('../assets/images/backgrounds/dig_trabalho.jpg') center / cover no-repeat;
+    background: url('../assets/images/backgrounds/dig_trabalho.jpg') bottom / cover no-repeat;
     z-index: -2;
 }
 
@@ -998,6 +1022,19 @@ footer {
 
     #sobre.sobre-urbano {
         padding: 64px 0;
+    }
+
+    .sobre-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .sobre-img {
+        height: 280px;
+    }
+
+    .sobre-content {
+        padding-left: 0;
     }
 
     .sobre-heading {
