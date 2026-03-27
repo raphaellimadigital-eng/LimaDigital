@@ -147,10 +147,7 @@
             </div>
 
             <div class="contato-form-area">
-                <form class="contato-form" action="https://formsubmit.co/raphaellima.digital@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Novo contato pelo site - Lima Digital">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
+                <form class="contato-form" id="form-contato">
                     <div class="form-grid">
                         <label>
                             <span>Nome</span>
@@ -192,6 +189,39 @@
         <img src="assets/images/icons/action/icon-whatsapp.png" alt="WhatsApp" class="whatsapp-icon-img">
         <div class="whatsapp-message">Posso ajudar?</div>
     </a>
+<script>
+document.getElementById('form-contato').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
+    const form = e.target;
+
+    const data = {
+        nome: form.nome.value,
+        telefone: form.telefone.value,
+        email: form.email.value,
+        empresa: form.empresa.value,
+        mensagem: form.mensagem.value,
+    };
+
+    try {
+        const res = await fetch('/api/email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+            alert('Mensagem enviada com sucesso!');
+            form.reset();
+        } else {
+            alert('Erro ao enviar.');
+        }
+    } catch (err) {
+        alert('Erro de conexão.');
+    }
+});
+</script>
 </body>
 </html>
